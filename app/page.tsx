@@ -6,7 +6,7 @@ import TechStack from './components/TechStack'
 import FadeImage from './components/FadeImage'
 import MyWork from './components/MyWork'
 import ContactMe from './components/ContactMe'
-
+import FeaturedCards from './components/FeaturedCard'
 import { createClient } from './lib/supabase/server'
 
 const PHOTO_URL = '/1767367971817.png'
@@ -27,7 +27,7 @@ const page = async () => {
       <section id="stack"><TechStack /></section>
       <section id="work"><MyWork /></section>
       <section id="contact"><ContactMe /></section>
-
+     
     </main>
   )
 }

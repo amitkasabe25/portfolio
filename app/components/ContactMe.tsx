@@ -66,7 +66,6 @@ const ContactMe = () => {
   }
 
   const handleSubmit = async () => {
-
     const name = nameRef.current?.value.trim()
     const email = emailRef.current?.value.trim()
     const subject = subjectRef.current?.value.trim()
@@ -111,228 +110,59 @@ const ContactMe = () => {
   }
 
   return (
-    <section id="contact"
-      style={{
-        fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
-        background: 'var(--bg, #020617)',
-        color: '#f8fafc',
-        padding: '60px 28px 80px',
-      }}
-    >
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-        :root {
-          --bg: #020617;
-          --bg2: #0f172a;
-          --card: rgba(15,23,42,0.82);
-          --border: rgba(255,255,255,0.08);
-          --bstrong: rgba(255,255,255,0.14);
-          --accent: #38bdf8;
-          --asoft: rgba(56,189,248,0.1);
-          --muted: #94a3b8;
-        }
-
-        .cm-wrap { max-width: 1280px; margin: 0 auto; }
-
-        .cm-grid {
-          display: grid;
-          grid-template-columns: 1fr 1.4fr;
-          gap: 20px;
-          align-items: start;
-        }
-
-        .cm-card {
-          border: 1px solid var(--border);
-          background: var(--card);
-          backdrop-filter: blur(12px);
-          border-radius: 20px;
-          padding: 22px;
-          transition: border-color .25s;
-        }
-        .cm-card:hover { border-color: rgba(56,189,248,.22); }
-
-        .cm-info-row {
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          padding: 14px 0;
-          border-bottom: 1px solid var(--border);
-        }
-        .cm-info-row:last-child { border-bottom: none; padding-bottom: 0; }
-
-        .cm-icon {
-          width: 38px; height: 38px; border-radius: 11px;
-          background: var(--asoft);
-          border: 1px solid rgba(56,189,248,.15);
-          display: flex; align-items: center; justify-content: center;
-          color: var(--accent); font-size: 17px; flex-shrink: 0; margin-top: 1px;
-        }
-
-        .cm-avail {
-          display: flex; align-items: center; gap: 10px;
-          padding: 14px 16px; border-radius: 13px;
-          background: rgba(34,197,94,0.06);
-          border: 1px solid rgba(34,197,94,0.18);
-          margin-top: 14px;
-        }
-        .cm-avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
-
-        .cm-social-btn {
-          display: flex; align-items: center; gap: 8px;
-          padding: 9px 14px; border-radius: 12px;
-          border: 1px solid var(--border);
-          background: rgba(255,255,255,0.02);
-          color: var(--muted); font-size: 12px; font-weight: 600;
-          letter-spacing: .04em; cursor: pointer;
-          transition: all .2s; font-family: inherit;
-        }
-        .cm-social-btn:hover { border-color: rgba(56,189,248,.28); color: var(--accent); background: var(--asoft); }
-        .cm-social-btn i { font-size: 16px; }
-
-        .cm-form-card {
-          border: 1px solid var(--border);
-          background: var(--card);
-          backdrop-filter: blur(12px);
-          border-radius: 20px;
-          padding: 28px;
-        }
-
-        .cm-type-grid {
-          display: grid;
-          grid-template-columns: repeat(3,1fr);
-          gap: 8px;
-          margin-bottom: 14px;
-        }
-        .cm-type-btn {
-          padding: 9px 10px; border-radius: 11px;
-          border: 1px solid var(--border);
-          background: rgba(255,255,255,0.02);
-          color: var(--muted); font-size: 11px; font-weight: 600;
-          letter-spacing: .06em; text-transform: uppercase;
-          cursor: pointer; text-align: center;
-          transition: all .2s; font-family: inherit;
-        }
-        .cm-type-btn:hover, .cm-type-btn.active {
-          background: var(--asoft);
-          border-color: rgba(56,189,248,.3);
-          color: var(--accent);
-        }
-
-        .cm-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
-        .cm-field-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-        .cm-field input, .cm-field textarea, .cm-field select {
-          background: rgba(255,255,255,0.04);
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          color: #f8fafc;
-          font-family: inherit;
-          font-size: 13px;
-          padding: 11px 14px;
-          outline: none;
-          transition: border-color .2s, background .2s;
-          width: 100%;
-          resize: none;
-        }
-        .cm-field input::placeholder, .cm-field textarea::placeholder { color: rgba(148,163,184,0.45); }
-        .cm-field input:focus, .cm-field textarea:focus, .cm-field select:focus {
-          border-color: rgba(56,189,248,.4);
-          background: rgba(56,189,248,0.04);
-        }
-        .cm-field textarea { min-height: 110px; line-height: 1.7; }
-        .cm-field select { appearance: none; cursor: pointer; }
-        .cm-field select option { background: #0f172a; color: #f8fafc; }
-
-        .cm-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-        .cm-submit {
-          width: 100%; padding: 14px; border-radius: 13px;
-          border: 1px solid rgba(56,189,248,.35);
-          background: var(--asoft); color: var(--accent);
-          font-size: 13px; font-weight: 700; letter-spacing: .08em;
-          text-transform: uppercase; cursor: pointer;
-          transition: all .25s; font-family: inherit;
-          display: flex; align-items: center; justify-content: center; gap: 10px;
-          margin-top: 20px;
-        }
-        .cm-submit:hover { background: rgba(56,189,248,.18); border-color: rgba(56,189,248,.5); }
-        .cm-submit:active { transform: scale(.98); }
-        .cm-submit i { font-size: 17px; }
-
-        .cm-success {
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center;
-          gap: 14px; padding: 40px 20px; text-align: center;
-        }
-        .cm-success-icon {
-          width: 56px; height: 56px; border-radius: 18px;
-          background: rgba(34,197,94,.1);
-          border: 1px solid rgba(34,197,94,.22);
-          display: flex; align-items: center; justify-content: center;
-          color: #22c55e; font-size: 26px;
-        }
-
-        .cm-divider { height: 1px; background: var(--border); margin: 18px 0; }
-        .cm-char-count { font-size: 10px; color: var(--muted); text-align: right; margin-top: 4px; }
-
-        @media (max-width: 860px) {
-          .cm-grid { grid-template-columns: 1fr; }
-          .cm-form-row { grid-template-columns: 1fr; }
-          .cm-type-grid { grid-template-columns: repeat(2,1fr); }
-        }
-      `}</style>
-
-      <div className="cm-wrap">
-
-        <div style={{ marginBottom: 40 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11, letterSpacing: '.2em', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 600, marginBottom: 10 }}>
-            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.14)', display: 'inline-block' }} />
+    <section id="contact" className="font-['DM_Sans','Helvetica_Neue',sans-serif] bg-white dark:bg-[#020617] text-zinc-900 dark:text-slate-100 py-[60px] px-7 pb-20 transition-colors duration-300">
+      <div className="max-w-[1280px] mx-auto">
+        {/* Header */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2.5 text-[11px] tracking-[.2em] uppercase text-zinc-500 dark:text-slate-400 font-semibold mb-2.5">
+            <span className="w-6 h-px bg-zinc-300 dark:bg-white/15 inline-block" />
             Let's connect
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem,4vw,3.2rem)', fontWeight: 300, letterSpacing: '-.05em', lineHeight: 1, color: '#f8fafc' }}>
-            Get in <em style={{ color: '#38bdf8', fontStyle: 'italic' }}>touch</em>
+          <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-light tracking-[-.05em] leading-none text-zinc-900 dark:text-slate-100">
+            Get in <em className="text-sky-600 dark:text-sky-400 not-italic">touch</em>
           </h2>
         </div>
 
-        <div className="cm-grid">
-
-          {/* LEFT — Info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-
-            <div className="cm-card">
+        {/* 2-column grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-5 items-start">
+          {/* LEFT – Info cards */}
+          <div className="flex flex-col gap-3.5">
+            {/* Contact info card */}
+            <div className="border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl p-[22px] transition-all duration-200 hover:border-sky-400/50 dark:hover:border-sky-400/30">
               {infoItems.map((item, i) => (
-                <div key={item.label} className="cm-info-row" style={i === 0 ? { paddingTop: 0 } : {}}>
-                  <div className="cm-icon">
+                <div key={item.label} className={`flex gap-3.5 py-3.5 ${i !== infoItems.length - 1 ? 'border-b border-zinc-200 dark:border-white/10' : ''} ${i === 0 ? 'pt-0' : ''}`}>
+                  <div className="w-[38px] h-[38px] rounded-xl bg-sky-100 dark:bg-sky-400/10 border border-sky-300 dark:border-sky-400/20 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 mt-0.5">
                     <item.Icon size={18} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 10, letterSpacing: '.1em', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 600, marginBottom: 3 }}>{item.label}</div>
-                    <div style={{ fontSize: 13, color: '#f8fafc', lineHeight: 1.5 }}>{item.value}</div>
-                    {item.sub && <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>{item.sub}</div>}
+                    <div className="text-[10px] tracking-[.1em] uppercase text-zinc-500 dark:text-slate-400 font-semibold mb-0.5">{item.label}</div>
+                    <div className="text-[13px] text-zinc-800 dark:text-slate-100 leading-relaxed">{item.value}</div>
+                    {item.sub && <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-1">{item.sub}</div>}
                   </div>
                 </div>
               ))}
 
-              <div className="cm-avail">
-                <div className="cm-avail-dot" />
+              {/* Availability badge */}
+              <div className="flex items-center gap-2.5 mt-3.5 p-3.5 rounded-xl bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/20">
+                <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_6px_#22c55e]" />
                 <div>
-                  <div style={{ fontSize: 12, color: '#22c55e', fontWeight: 600, letterSpacing: '.04em' }}>Available for new projects</div>
-                  <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 1 }}>Open to freelance & full-time roles</div>
+                  <div className="text-[12px] text-green-700 dark:text-green-400 font-semibold tracking-[.04em]">Available for new projects</div>
+                  <div className="text-[11px] text-zinc-600 dark:text-slate-400 mt-0.5">Open to freelance & full-time roles</div>
                 </div>
               </div>
             </div>
 
-            <div className="cm-card" style={{ padding: '18px 22px' }}>
-              <div style={{ fontSize: 10, letterSpacing: '.12em', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 600, marginBottom: 12 }}>Find me online</div>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            {/* Socials card */}
+            <div className="border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl p-[18px_22px] transition-all duration-200 hover:border-sky-400/50 dark:hover:border-sky-400/30">
+              <div className="text-[10px] tracking-[.12em] uppercase text-zinc-500 dark:text-slate-400 font-semibold mb-3">Find me online</div>
+              <div className="flex flex-wrap gap-2.5">
                 {socials.map(s => (
                   <a
                     key={s.label}
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cm-social-btn"
-                    aria-label={s.label}
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/5 text-zinc-600 dark:text-slate-400 text-[12px] font-semibold tracking-wide transition-all duration-200 hover:border-sky-400/50 dark:hover:border-sky-400/30 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-400/10"
                   >
                     <s.Icon size={16} />
                     {s.label}
@@ -342,61 +172,89 @@ const ContactMe = () => {
             </div>
           </div>
 
-          {/* RIGHT — Form */}
-          <div className="cm-form-card">
+          {/* RIGHT – Form card */}
+          <div className="border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl p-7 transition-all duration-200">
             {!submitted ? (
               <>
-                <div style={{ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', color: '#94a3b8', fontWeight: 600, marginBottom: 16 }}>
+                <div className="text-[11px] tracking-[.12em] uppercase text-zinc-500 dark:text-slate-400 font-semibold mb-4">
                   What are you reaching out about?
                 </div>
 
-                <div className="cm-type-grid">
+                {/* Contact type buttons */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3.5">
                   {contactTypes.map(t => (
                     <button
                       key={t.value}
-                      className={`cm-type-btn${activeType === t.value ? ' active' : ''}`}
                       onClick={() => setActiveType(t.value)}
+                      className={`
+                        px-2.5 py-2 rounded-xl text-[11px] font-semibold tracking-wide uppercase
+                        border transition-all duration-200
+                        ${activeType === t.value
+                          ? 'bg-sky-100 dark:bg-sky-400/10 border-sky-300 dark:border-sky-400/30 text-sky-700 dark:text-sky-400'
+                          : 'bg-white/50 dark:bg-white/5 border-zinc-200 dark:border-white/10 text-zinc-500 dark:text-slate-400 hover:border-sky-400/50 dark:hover:border-sky-400/30 hover:text-sky-600 dark:hover:text-sky-400'
+                        }
+                      `}
                     >
                       {t.label}
                     </button>
                   ))}
                 </div>
 
-                <div className="cm-divider" />
+                <div className="h-px bg-zinc-200 dark:bg-white/10 my-4" />
 
-                <div className="cm-form-row" style={{ marginBottom: 14 }}>
-                  <div className="cm-field" style={{ marginBottom: 0 }}>
-                    <div className="cm-field-label">Full name</div>
-                    <input ref={nameRef} type="text" placeholder="Your name" />
+                {/* Form fields */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-3.5">
+                  <div className="flex flex-col gap-1.5">
+                    <div className="text-[11px] tracking-[.1em] uppercase text-zinc-500 dark:text-slate-400 font-semibold">Full name</div>
+                    <input
+                      ref={nameRef}
+                      type="text"
+                      placeholder="Your name"
+                      className="bg-white/50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-slate-100 placeholder:text-zinc-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-sky-400/50 dark:focus:border-sky-400/30 focus:bg-white/80 dark:focus:bg-sky-400/5 transition-all duration-200"
+                    />
                   </div>
-                  <div className="cm-field" style={{ marginBottom: 0 }}>
-                    <div className="cm-field-label">Email address</div>
-                    <input ref={emailRef} type="email" placeholder="you@example.com" />
+                  <div className="flex flex-col gap-1.5">
+                    <div className="text-[11px] tracking-[.1em] uppercase text-zinc-500 dark:text-slate-400 font-semibold">Email address</div>
+                    <input
+                      ref={emailRef}
+                      type="email"
+                      placeholder="you@example.com"
+                      className="bg-white/50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-slate-100 placeholder:text-zinc-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-sky-400/50 dark:focus:border-sky-400/30 focus:bg-white/80 dark:focus:bg-sky-400/5 transition-all duration-200"
+                    />
                   </div>
                 </div>
 
-                <div className="cm-field">
-                  <div className="cm-field-label">Subject</div>
-                  <input ref={subjectRef} type="text" placeholder="Brief topic of your message" />
+                <div className="flex flex-col gap-1.5 mb-3.5">
+                  <div className="text-[11px] tracking-[.1em] uppercase text-zinc-500 dark:text-slate-400 font-semibold">Subject</div>
+                  <input
+                    ref={subjectRef}
+                    type="text"
+                    placeholder="Brief topic of your message"
+                    className="bg-white/50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-slate-100 placeholder:text-zinc-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-sky-400/50 dark:focus:border-sky-400/30 focus:bg-white/80 dark:focus:bg-sky-400/5 transition-all duration-200"
+                  />
                 </div>
 
-                <div className="cm-field">
-                  <div className="cm-field-label">Message</div>
+                <div className="flex flex-col gap-1.5 mb-3.5">
+                  <div className="text-[11px] tracking-[.1em] uppercase text-zinc-500 dark:text-slate-400 font-semibold">Message</div>
                   <textarea
                     ref={msgRef}
                     maxLength={500}
+                    rows={4}
                     placeholder="Tell me about your project, timeline, and what kind of help you're looking for..."
                     onChange={e => setCharCount(e.target.value.length)}
+                    className="bg-white/50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-slate-100 placeholder:text-zinc-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-sky-400/50 dark:focus:border-sky-400/30 focus:bg-white/80 dark:focus:bg-sky-400/5 transition-all duration-200 resize-none min-h-[110px]"
                   />
-                  <div className="cm-char-count">{charCount} / 500</div>
+                  <div className="text-right text-[10px] text-zinc-400 dark:text-slate-500 mt-1">{charCount} / 500</div>
                 </div>
 
-                <div className="cm-field" style={{ marginBottom: 0 }}>
-                  <div className="cm-field-label">
-                    Budget range{' '}
-                    <span style={{ color: 'rgba(148,163,184,0.4)', fontWeight: 400, letterSpacing: 0, textTransform: 'none' }}>(optional)</span>
+                <div className="flex flex-col gap-1.5">
+                  <div className="text-[11px] tracking-[.1em] uppercase text-zinc-500 dark:text-slate-400 font-semibold">
+                    Budget range <span className="text-zinc-400 dark:text-slate-500 font-normal tracking-normal normal-case">(optional)</span>
                   </div>
-                  <select ref={budgetRef}>
+                  <select
+                    ref={budgetRef}
+                    className="bg-white/50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-slate-100 focus:outline-none focus:border-sky-400/50 dark:focus:border-sky-400/30 focus:bg-white/80 dark:focus:bg-sky-400/5 transition-all duration-200 cursor-pointer appearance-none"
+                  >
                     <option value="">Select a range...</option>
                     <option>Under ₹50,000</option>
                     <option>₹50,000 – ₹2,00,000</option>
@@ -407,25 +265,28 @@ const ContactMe = () => {
                 </div>
 
                 <button
-                  className="cm-submit"
                   onClick={handleSubmit}
                   disabled={loading}
+                  className="w-full mt-5 py-3.5 rounded-xl bg-sky-100 dark:bg-sky-400/10 border border-sky-300 dark:border-sky-400/30 text-sky-700 dark:text-sky-400 text-[13px] font-bold tracking-wide uppercase flex items-center justify-center gap-2 transition-all duration-200 hover:bg-sky-200 dark:hover:bg-sky-400/20 hover:border-sky-400 dark:hover:border-sky-400/50 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   <Lucide.Send size={16} />
-
                   {loading ? 'Sending...' : 'Send message'}
                 </button>
               </>
             ) : (
-              <div className="cm-success">
-                <div className="cm-success-icon">
-                  <Lucide.Check size={22} />
+              /* Success state */
+              <div className="flex flex-col items-center justify-center gap-3.5 py-10 px-5 text-center">
+                <div className="w-14 h-14 rounded-xl bg-green-100 dark:bg-green-500/10 border border-green-300 dark:border-green-500/20 flex items-center justify-center text-green-600 dark:text-green-400">
+                  <Lucide.Check size={26} />
                 </div>
-                <div style={{ fontSize: 18, fontWeight: 500, color: '#f8fafc' }}>Message sent!</div>
-                <div style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.7 }}>
+                <div className="text-lg font-medium text-zinc-900 dark:text-slate-100">Message sent!</div>
+                <div className="text-[13px] text-zinc-600 dark:text-slate-400 leading-relaxed">
                   Thanks for reaching out. I'll get back to<br />you within 24 hours.
                 </div>
-                <button className="cm-social-btn" onClick={handleReset} style={{ marginTop: 8 }}>
+                <button
+                  onClick={handleReset}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-slate-400 text-[12px] font-semibold tracking-wide transition-all duration-200 hover:border-sky-400/50 dark:hover:border-sky-400/30 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-400/10 mt-2"
+                >
                   <Lucide.ArrowLeft size={16} />
                   Send another
                 </button>

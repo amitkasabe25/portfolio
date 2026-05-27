@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Heading from './Heading'
+
 type Category = {
     title: string
     icon: string
@@ -204,75 +205,44 @@ const TechStack: React.FC = () => {
     const [hovered, setHovered] = useState<number | null>(null)
 
     return (
-        <section className="py-[100px] px-6 font-['DM_Sans',system-ui,sans-serif] bg-[var(--bg)] transition-all duration-250 ease">
-            <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
-                
-                :root {
-                    --bg: #fafafa;
-                    --card: #ffffff;
-                    --card-hover: #f5f5f5;
-                    --text: #111111;
-                    --text-secondary: #555555;
-                    --text-muted: #888888;
-                    --border: #e5e5e5;
-                    --border-strong: #d5d5d5;
-                    --tag-bg: #f1f1f1;
-                    --icon-bg: #ffffff;
-                    --accent: #0f172a;
-                }
-                
-                @media (prefers-color-scheme: dark) {
-                    :root {
-                        --bg: #050816;
-                        --card: #0f172a;
-                        --card-hover: #162033;
-                        --text: #f8fafc;
-                        --text-secondary: #cbd5e1;
-                        --text-muted: #94a3b8;
-                        --border: rgba(255,255,255,0.08);
-                        --border-strong: rgba(255,255,255,0.15);
-                        --tag-bg: rgba(255,255,255,0.05);
-                        --icon-bg: rgba(255,255,255,0.03);
-                        --accent: #38bdf8;
-                    }
-                }
-            `}</style>
-
+        <section className="py-[100px] px-6 font-['DM_Sans',system-ui,sans-serif] bg-white dark:bg-[#050816] transition-all duration-250 ease">
             <div className="max-w-[1180px] mx-auto">
                 <Heading
                     title="Engineering Stack"
                     subtitle={
                         <>
-                            Technologies <em className="text-sky-400 italic">I build</em>
+                            Technologies <em className="text-sky-600 dark:text-sky-400 italic">I build</em>
                             <br />
                             with
                         </>
                     }
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[var(--border)] backdrop-blur-[10px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-zinc-200 dark:border-white/10 backdrop-blur-[10px]">
                     {stackCategories.map((cat, i) => (
                         <div
                             key={i}
-                            className={`relative overflow-hidden border-r border-b border-[var(--border)] p-8 bg-[var(--card)] transition-all duration-250 ease cursor-default ${hovered === i ? 'bg-[var(--card-hover)] -translate-y-1' : ''
-                                }`}
+                            className={`relative overflow-hidden border-r border-b border-zinc-200 dark:border-white/10 p-8 bg-white dark:bg-[#0f172a] transition-all duration-250 ease cursor-default ${
+                                hovered === i ? 'bg-zinc-50 dark:bg-[#162033] -translate-y-1' : ''
+                            }`}
                             onMouseEnter={() => setHovered(i)}
                             onMouseLeave={() => setHovered(null)}
                         >
-                            <div className={`absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.12),transparent_45%)] transition-opacity duration-250 ease pointer-events-none ${hovered === i ? 'opacity-100' : 'opacity-0'
-                                }`} />
+                            <div className={`absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.12),transparent_45%)] transition-opacity duration-250 ease pointer-events-none ${
+                                hovered === i ? 'opacity-100' : 'opacity-0'
+                            }`} />
 
-                            <div className={`w-[42px] h-[42px] border border-[var(--border)] rounded-xl flex items-center justify-center text-[var(--text-secondary)] mb-6 bg-[var(--icon-bg)] transition-all duration-250 ease ${hovered === i ? 'border-[var(--accent)] text-[var(--accent)] scale-105' : ''
-                                }`}>
+                            <div className={`w-[42px] h-[42px] border border-zinc-200 dark:border-white/10 rounded-xl flex items-center justify-center text-zinc-600 dark:text-slate-400 mb-6 bg-white dark:bg-white/5 transition-all duration-250 ease ${
+                                hovered === i ? 'border-sky-500 dark:border-sky-400 text-sky-500 dark:text-sky-400 scale-105' : ''
+                            }`}>
                                 {iconPaths[cat.icon]}
                             </div>
 
-                            <h3 className="text-base font-medium text-[var(--text)] m-0 mb-2.5 tracking-[-0.02em]">
+                            <h3 className="text-base font-medium text-zinc-900 dark:text-slate-100 m-0 mb-2.5 tracking-[-0.02em]">
                                 {cat.title}
                             </h3>
 
-                            <p className="text-sm text-[var(--text-muted)] leading-[1.7] m-0 mb-6 font-light">
+                            <p className="text-sm text-zinc-600 dark:text-slate-400 leading-[1.7] m-0 mb-6 font-light">
                                 {cat.description}
                             </p>
 
@@ -280,8 +250,9 @@ const TechStack: React.FC = () => {
                                 {cat.technologies.map((tech, j) => (
                                     <span
                                         key={j}
-                                        className={`text-[11px] text-[var(--text-secondary)] border border-[var(--border)] rounded-full px-3 py-1.5 bg-transparent font-normal tracking-[0.02em] transition-all duration-200 ease ${hovered === i ? 'border-[var(--border-strong)] bg-[var(--tag-bg)] text-[var(--text)]' : ''
-                                            }`}
+                                        className={`text-[11px] text-zinc-600 dark:text-slate-400 border border-zinc-200 dark:border-white/10 rounded-full px-3 py-1.5 bg-transparent font-normal tracking-[0.02em] transition-all duration-200 ease ${
+                                            hovered === i ? 'border-zinc-400 dark:border-white/20 bg-zinc-100 dark:bg-white/10 text-zinc-900 dark:text-slate-100' : ''
+                                        }`}
                                     >
                                         {tech}
                                     </span>

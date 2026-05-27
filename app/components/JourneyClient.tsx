@@ -3,7 +3,17 @@ import React from 'react'
 import Heading from './Heading'
 import { Badge } from '@/components/ui/badge'
 
-const JourneyClient = ({ journeys }: { journeys: any[] }) => {
+type Journey = {
+    year?: string | number
+    badge?: string
+    company?: string
+    role?: string
+    date?: string
+    description?: string
+    stack?: string[]
+}
+
+const JourneyClient = ({ journeys }: { journeys: Journey[] }) => {
     return (
         <section id="journey" className="relative overflow-hidden py-5 px-6 bg-white dark:bg-[#050816] text-zinc-900 dark:text-white transition-colors duration-300">
             {/* subtle gradient backdrop */}
@@ -92,7 +102,7 @@ const JourneyClient = ({ journeys }: { journeys: any[] }) => {
                                 </div>
 
                                 <div className="flex flex-wrap gap-2.5">
-                                    {item.stack.map((tech, idx) => (
+                                    {item.stack?.map((tech: string, idx: number) => (
                                         <div
                                             key={idx}
                                             className="px-3.5 py-2 rounded-full bg-zinc-100 dark:bg-white/5 border border-zinc-300 dark:border-white/10 text-zinc-700 dark:text-gray-300 text-xs font-medium transition-all duration-250 ease cursor-default

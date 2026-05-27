@@ -93,8 +93,6 @@ const ContactMe = () => {
 
     if (result.success) {
       setSubmitted(true)
-    } else {
-      alert(result.error)
     }
   }
 

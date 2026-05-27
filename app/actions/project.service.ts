@@ -58,11 +58,11 @@ export async function getProjects() {
     badges: [
       {
         label: project.category || "General",
-        type: "gov",
+        type: "gov" as const,
       },
       {
         label: project.status || "Active",
-        type: "live",
+        type: "live" as const,
       },
     ],
 

@@ -1,6 +1,7 @@
-'use client'
+ 'use client'
 
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const Navbar = () => {
     const [activeLink, setActiveLink] = useState<string>('Home')
@@ -11,6 +12,7 @@ const Navbar = () => {
         { label: 'Home', id: 'home' },
         { label: 'About', id: 'journey' },
         { label: 'Work', id: 'work' },
+        { label: 'Demo', id: 'demo' },
     ]
 
     // Detect system theme on first load
@@ -148,36 +150,65 @@ const Navbar = () => {
                 <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">
                     {links.map((link) => (
                         <li key={link.id}>
-                            <a
-                                href={`#${link.id}`}
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    scrollToSection(link.id, link.label)
-                                }}
-                                className={`
-                                    relative
-                                    px-4 py-2
-                                    rounded-xl
-                                    text-sm font-medium
-                                    no-underline
-                                    transition-all duration-300
-                                    ${
-                                        activeLink === link.label
-                                            ? `
-                                                bg-zinc-900 dark:bg-white
-                                                text-white dark:text-black
-                                                shadow-sm
-                                              `
-                                            : `
-                                                text-zinc-600 dark:text-zinc-400
-                                                hover:text-zinc-900 dark:hover:text-white
-                                                hover:bg-zinc-100 dark:hover:bg-zinc-900
-                                              `
-                                    }
-                                `}
-                            >
-                                {link.label}
-                            </a>
+                            {link.id === 'demo' ? (
+                                <Link
+                                    href="/demo"
+                                    className={`
+                                        relative
+                                        px-4 py-2
+                                        rounded-xl
+                                        text-sm font-medium
+                                        no-underline
+                                        transition-all duration-300
+                                        ${
+                                            activeLink === link.label
+                                                ? `
+                                                    bg-zinc-900 dark:bg-white
+                                                    text-white dark:text-black
+                                                    shadow-sm
+                                                  `
+                                                : `
+                                                    text-zinc-600 dark:text-zinc-400
+                                                    hover:text-zinc-900 dark:hover:text-white
+                                                    hover:bg-zinc-100 dark:hover:bg-zinc-900
+                                                  `
+                                        }
+                                    `}
+                                >
+                                    {link.label}
+                                </Link>
+                            ) : (
+                                <a
+                                    href={`#${link.id}`}
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        scrollToSection(link.id, link.label)
+                                    }}
+                                    className={`
+                                        relative
+                                        px-4 py-2
+                                        rounded-xl
+                                        text-sm font-medium
+                                        no-underline
+                                        transition-all duration-300
+                                        ${
+                                            activeLink === link.label
+                                                ? `
+                                                    bg-zinc-900 dark:bg-white
+                                                    text-white dark:text-black
+                                                    shadow-sm
+                                                  `
+                                                : `
+                                                    text-zinc-600 dark:text-zinc-400
+                                                    hover:text-zinc-900 dark:hover:text-white
+                                                    hover:bg-zinc-100 dark:hover:bg-zinc-900
+                                                  `
+                                        }
+                                    `}
+                                >
+                                    {link.label}
+                                </a>
+                            )}
                         </li>
                     ))}
                 </ul>
@@ -278,37 +309,66 @@ const Navbar = () => {
                     "
                 >
                     {links.map((l) => (
-                        <a
-                            key={l.id}
-                            href={`#${l.id}`}
-                            onClick={(e) => {
-                                e.preventDefault()
+                        l.id === 'demo' ? (
+                            <Link
+                                key={l.id}
+                                href="/demo"
+                                onClick={() => setMobileOpen(false)}
+                                className={`
+                                    px-4 py-3
+                                    rounded-xl
+                                    text-sm font-medium
+                                    no-underline
+                                    transition-all duration-300
+                                    ${
+                                        activeLink === l.label
+                                            ? `
+                                                bg-zinc-900 dark:bg-white
+                                                text-white dark:text-black
+                                              `
+                                            : `
+                                                text-zinc-600 dark:text-zinc-400
+                                                hover:bg-zinc-100 dark:hover:bg-zinc-900
+                                                hover:text-zinc-900 dark:hover:text-white
+                                              `
+                                    }
+                                `}
+                            >
+                                {l.label}
+                            </Link>
+                        ) : (
+                            <a
+                                key={l.id}
+                                href={`#${l.id}`}
+                                onClick={(e) => {
+                                    e.preventDefault()
 
-                                setMobileOpen(false)
-                                scrollToSection(l.id, l.label)
-                            }}
-                            className={`
-                                px-4 py-3
-                                rounded-xl
-                                text-sm font-medium
-                                no-underline
-                                transition-all duration-300
-                                ${
-                                    activeLink === l.label
-                                        ? `
-                                            bg-zinc-900 dark:bg-white
-                                            text-white dark:text-black
-                                          `
-                                        : `
-                                            text-zinc-600 dark:text-zinc-400
-                                            hover:bg-zinc-100 dark:hover:bg-zinc-900
-                                            hover:text-zinc-900 dark:hover:text-white
-                                          `
-                                }
-                            `}
-                        >
-                            {l.label}
-                        </a>
+                                    setMobileOpen(false)
+                                    scrollToSection(l.id, l.label)
+                                }}
+                                className={`
+                                    px-4 py-3
+                                    rounded-xl
+                                    text-sm font-medium
+                                    no-underline
+                                    transition-all duration-300
+                                    ${
+                                        activeLink === l.label
+                                            ? `
+                                                bg-zinc-900 dark:bg-white
+                                                text-white dark:text-black
+                                              `
+                                            : `
+                                                text-zinc-600 dark:text-zinc-400
+                                                hover:bg-zinc-100 dark:hover:bg-zinc-900
+                                                hover:text-zinc-900 dark:hover:text-white
+                                              `
+                                    }
+                                `}
+                            >
+                                {l.label}
+                            </a>
+                        )
                     ))}
 
                     <div

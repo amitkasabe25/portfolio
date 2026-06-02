@@ -6,12 +6,16 @@ import TechStack from './components/TechStack'
 
 import MyWork from './components/MyWork'
 import ContactMe from './components/ContactMe'
+import Footer from './components/Footer'
 
 import { createClient } from './lib/supabase/server'
+
+
 
 const PHOTO_URL = '/1767367971817.png'
 
 const page = async () => {
+  
 
   const supabase = await createClient()
 
@@ -27,6 +31,7 @@ const page = async () => {
       <section id="stack"><TechStack /></section>
       <section id="work"><MyWork /></section>
       <section id="contact"><ContactMe /></section>
+      <footer><Footer /></footer>
 
     </main>
   )

@@ -87,8 +87,6 @@ const ContactMe = () => {
       budget_range: budget || '',
     })
 
-    console.log(result)
-
     setLoading(false)
 
     if (result.success) {

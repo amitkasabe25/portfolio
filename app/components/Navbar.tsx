@@ -12,7 +12,6 @@ const Navbar = () => {
         { label: 'Home', id: 'home' },
         { label: 'About', id: 'journey' },
         { label: 'Work', id: 'work' },
-        { label: 'Demo', id: 'demo' },
     ]
 
     // Detect system theme on first load

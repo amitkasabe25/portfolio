@@ -11,6 +11,7 @@ import {
     Calendar,
     Braces,
 } from 'lucide-react'
+import NetworkBackground from './NetworkBackground'
 
 const PHOTO_URL = '/1767367971817.png'
 
@@ -47,6 +48,7 @@ const tools = [
 const Hero = () => {
     return (
         <section className="relative overflow-hidden bg-white dark:bg-[#020617] min-h-screen text-zinc-900 dark:text-slate-100 font-sans transition-colors duration-300">
+            <NetworkBackground />   {/* ← add this as the first child */}
             {/* Glow orbs - only visible in dark mode */}
             <div className="pointer-events-none absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-0 dark:opacity-15 bg-sky-400 -top-48 -left-48 z-0 transition-opacity duration-300" />
             <div className="pointer-events-none absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-0 dark:opacity-15 bg-blue-600 -bottom-48 -right-48 z-0 transition-opacity duration-300" />

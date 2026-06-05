@@ -9,8 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@auth/core": "^0.41.2",
+    "@auth/prisma-adapter": "^2.11.2",
     "@base-ui/react": "^1.5.0",
     "@phosphor-icons/react": "github:phosphor-icons/react",
+    "@prisma/client": "^7.8.0",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@react-three/postprocessing": "^3.0.4",
@@ -22,6 +26,8 @@
     "jspdf": "^4.2.1",
     "lucide-react": "^1.16.0",
     "next": "16.2.6",
+    "next-auth": "^5.0.0-beta.31",
+    "prisma": "^7.8.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "shadcn": "^4.8.0",

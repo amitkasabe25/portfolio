@@ -17,8 +17,7 @@ export default function ClassicTemplate({ data }: Props) {
     }
 
     return (
-        <section className="flex-1 h-full overflow-y-auto bg-zinc-100 dark:bg-zinc-950 p-8 flex justify-center">
-            <div className="w-[800px] min-h-[1123px] h-fit bg-white dark:bg-zinc-900 shadow-lg border border-zinc-200 dark:border-zinc-800 p-12 space-y-8">
+        <div className="w-[800px] min-h-[1123px] h-fit bg-white dark:bg-zinc-900 shadow-lg border border-zinc-200 dark:border-zinc-800 p-12 space-y-8">
 
                 {/* ── Header (centered, formal) ─────────────────── */}
                 <header className="text-center pb-6 border-b border-zinc-300 dark:border-zinc-700">
@@ -159,7 +158,6 @@ export default function ClassicTemplate({ data }: Props) {
                     References available upon request
                 </footer>
             </div>
-        </section>
     );
 }
 

@@ -17,8 +17,7 @@ export default function ModernTemplate({ data }: Props) {
     }
 
     return (
-        <section className="flex-1 h-full overflow-y-auto bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900 p-8 flex justify-center">
-            <div className="w-[1000px] min-h-[1123px] h-fit bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 overflow-hidden">
+        <div className="w-[860px] min-h-[1123px] h-fit bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200/50 dark:border-zinc-800/50 overflow-hidden">
 
                 <div className="grid grid-cols-[1fr_2fr] gap-0">
                     {/* ── Sidebar (Left) ────────────────────────── */}
@@ -190,7 +189,6 @@ export default function ModernTemplate({ data }: Props) {
                     </main>
                 </div>
             </div>
-        </section>
     );
 }
 

@@ -17,8 +17,7 @@ export default function MinimalTemplate({ data }: Props) {
     }
 
     return (
-        <section className="flex-1 h-full overflow-y-auto bg-zinc-100 dark:bg-zinc-950 p-4 flex justify-center">
-            <div className="w-[820px] min-h-[1123px] h-fit bg-white dark:bg-zinc-900 shadow-sm border border-zinc-200 dark:border-zinc-800 p-6 space-y-5">
+        <div className="w-[820px] min-h-[1123px] h-fit bg-white dark:bg-zinc-900 shadow-sm border border-zinc-200 dark:border-zinc-800 p-6 space-y-5">
 
                 {/* ── Header ─────────────────────────────── */}
                 <header className="pb-4 border-b border-zinc-200 dark:border-zinc-800">
@@ -153,8 +152,7 @@ export default function MinimalTemplate({ data }: Props) {
                     </ResumeSection>
                 )}
 
-            </div>
-        </section>
+        </div>
     );
 }
 

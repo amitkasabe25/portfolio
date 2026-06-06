@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { 
-  Sphere, Box, Torus, TorusKnot, Float, Stars, 
+import {
+  Sphere, Box, Torus, TorusKnot, Float, Stars,
   Ring, Cylinder, MeshDistortMaterial, Environment
 } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
@@ -46,7 +46,7 @@ function HyperScene() {
     const targetX = Math.sin(angle) * radius
     const targetZ = Math.cos(angle) * radius * 0.8
     const targetY = 2.5 + p * 2 + Math.sin(angle * 2) * 0.5
-    
+
     camera.position.lerp(new THREE.Vector3(targetX, targetY, targetZ), 0.06)
     camera.lookAt(0, 1.5, 0)
 
@@ -55,7 +55,7 @@ function HyperScene() {
       centralEmblemRef.current.rotation.y = p * Math.PI * 2
       centralEmblemRef.current.rotation.x = Math.sin(p * Math.PI) * 0.5
       const intensity = 0.8 + p * 1.5 + Math.sin(t * 5) * 0.2
-      ;(centralEmblemRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = intensity
+        ; (centralEmblemRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = intensity
     }
 
     // Rotating main group
@@ -102,7 +102,7 @@ function HyperScene() {
       particlesRef.current.position.y = -1 + p * 2.5
       if (particlesRef.current.material) {
         const hue = 0.55 + p * 0.3
-        ;(particlesRef.current.material as THREE.PointsMaterial).color.setHSL(hue, 1.0, 0.6)
+          ; (particlesRef.current.material as THREE.PointsMaterial).color.setHSL(hue, 1.0, 0.6)
       }
     }
   })
@@ -112,9 +112,9 @@ function HyperScene() {
   const particlePositions = useMemo(() => {
     const positions = new Float32Array(particleCount * 3)
     for (let i = 0; i < particleCount; i++) {
-      positions[i*3] = (Math.random() - 0.5) * 22
-      positions[i*3+1] = (Math.random() - 0.5) * 12
-      positions[i*3+2] = (Math.random() - 0.5) * 18 - 4
+      positions[i * 3] = (Math.random() - 0.5) * 22
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 12
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 18 - 4
     }
     return positions
   }, [])
@@ -141,9 +141,9 @@ function HyperScene() {
         <Float speed={1.2} rotationIntensity={0.6} floatIntensity={0.8}>
           <mesh ref={centralEmblemRef} position={[0, 0, 0]}>
             <cylinderGeometry args={[1.0, 1.0, 0.4, 48]} />
-            <MeshDistortMaterial 
-              color="#1e40af" 
-              emissive="#3b82f6" 
+            <MeshDistortMaterial
+              color="#1e40af"
+              emissive="#3b82f6"
               emissiveIntensity={1.2}
               metalness={0.9}
               roughness={0.15}
@@ -201,7 +201,10 @@ function HyperScene() {
       {/* Hyper Particle System */}
       <points ref={particlesRef}>
         <bufferGeometry>
-          <bufferAttribute attach="attributes-position" array={particlePositions} count={particleCount} itemSize={3} />
+          <bufferAttribute
+            attach="attributes-position"
+            args={[particlePositions, 3]}
+          />
         </bufferGeometry>
         <pointsMaterial color="#3b82f6" size={0.06} transparent opacity={0.5} blending={THREE.AdditiveBlending} />
       </points>

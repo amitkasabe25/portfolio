@@ -19,7 +19,8 @@ export default function ResumeEditor({
     return (
         <section
             className="
-                w-[40%]
+                w-[380px]
+                shrink-0
                 overflow-y-auto
                 border-r
                 border-zinc-200

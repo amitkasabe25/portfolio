@@ -119,23 +119,6 @@ export default function ResumeSidebar({
 
             {/* Logo */}
             <div className={`mb-10 ${sidebarCollapsed ? "items-center" : ""}`}>
-                <div
-                    className="
-            w-11 h-11
-            rounded-2xl
-            bg-zinc-900
-            dark:bg-white
-            text-white
-            dark:text-black
-            flex
-            items-center
-            justify-center
-            font-bold
-            text-sm
-          "
-                >
-                    AK
-                </div>
 
                 {!sidebarCollapsed && (
                     <>

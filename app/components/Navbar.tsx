@@ -1,12 +1,15 @@
- 'use client'
+'use client'
 
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useAuth } from '../hooks/useAuth'
 
 const Navbar = () => {
     const [activeLink, setActiveLink] = useState<string>('Home')
     const [mobileOpen, setMobileOpen] = useState<boolean>(false)
     const [darkMode, setDarkMode] = useState<boolean>(false)
+    const { user, loading, signOut } = useAuth()
 
     const links: { label: string; id: string }[] = [
         { label: 'Home', id: 'home' },
@@ -111,8 +114,8 @@ const Navbar = () => {
                 "
             >
                 {/* Logo */}
-                <a
-                    href="#"
+                <Link
+                    href="/"
                     className="flex items-center gap-3 no-underline group"
                 >
                     <div
@@ -143,7 +146,7 @@ const Navbar = () => {
                     >
                         Amit Kasabe
                     </span>
-                </a>
+                </Link>
 
                 {/* Desktop Nav */}
                 <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">
@@ -254,6 +257,61 @@ const Navbar = () => {
                     >
                         Contact
                     </a>
+
+                    {/* Auth */}
+                    {!loading && (
+                        user ? (
+                            <div className="flex items-center gap-2">
+                                {user.user_metadata?.avatar_url ? (
+                                    <Image
+                                        src={user.user_metadata.avatar_url}
+                                        alt={user.user_metadata?.full_name ?? 'User'}
+                                        width={36}
+                                        height={36}
+                                        className="rounded-full border border-zinc-200 dark:border-zinc-800"
+                                    />
+                                ) : (
+                                    <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+                                        {(user.user_metadata?.full_name ?? user.email ?? '?')[0].toUpperCase()}
+                                    </div>
+                                )}
+                                <button
+                                    onClick={signOut}
+                                    className="
+                                        px-4 py-2
+                                        rounded-xl
+                                        border
+                                        border-zinc-200 dark:border-zinc-800
+                                        text-sm font-medium
+                                        text-zinc-600 dark:text-zinc-400
+                                        hover:text-zinc-900 dark:hover:text-white
+                                        hover:bg-zinc-100 dark:hover:bg-zinc-900
+                                        transition-all duration-300
+                                    "
+                                >
+                                    Sign out
+                                </button>
+                            </div>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="
+                                    px-5 py-2
+                                    rounded-xl
+                                    border
+                                    border-zinc-200 dark:border-zinc-800
+                                    text-sm font-medium
+                                    text-zinc-600 dark:text-zinc-400
+                                    hover:text-zinc-900 dark:hover:text-white
+                                    hover:bg-zinc-100 dark:hover:bg-zinc-900
+                                    no-underline
+                                    transition-all duration-300
+                                "
+                            >
+                                Sign in
+                            </Link>
+                        )
+                    )}
                 </div>
 
                 {/* Mobile Controls */}
@@ -385,6 +443,58 @@ const Navbar = () => {
                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         Available for work
                     </div>
+
+                    {/* Mobile Auth */}
+                    {!loading && (
+                        user ? (
+                            <div className="mt-1 flex items-center justify-between px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                                <div className="flex items-center gap-2">
+                                    {user.user_metadata?.avatar_url ? (
+                                        <Image
+                                            src={user.user_metadata.avatar_url}
+                                            alt={user.user_metadata?.full_name ?? 'User'}
+                                            width={28}
+                                            height={28}
+                                            className="rounded-full"
+                                        />
+                                    ) : (
+                                        <div className="w-7 h-7 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                                            {(user.user_metadata?.full_name ?? user.email ?? '?')[0].toUpperCase()}
+                                        </div>
+                                    )}
+                                    <span className="text-sm text-zinc-700 dark:text-zinc-300 truncate max-w-[140px]">
+                                        {user.user_metadata?.full_name ?? user.email}
+                                    </span>
+                                </div>
+                                <button
+                                    onClick={() => { signOut(); setMobileOpen(false) }}
+                                    className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                                >
+                                    Sign out
+                                </button>
+                            </div>
+                        ) : (
+                            <Link
+                                href="/login"
+                                onClick={() => setMobileOpen(false)}
+                                className="
+                                    mt-1 px-4 py-3
+                                    rounded-xl
+                                    border
+                                    border-zinc-200 dark:border-zinc-800
+                                    text-sm font-medium
+                                    text-center
+                                    no-underline
+                                    text-zinc-600 dark:text-zinc-400
+                                    hover:text-zinc-900 dark:hover:text-white
+                                    hover:bg-zinc-100 dark:hover:bg-zinc-900
+                                    transition-all duration-300
+                                "
+                            >
+                                Sign in
+                            </Link>
+                        )
+                    )}
                 </nav>
             )}
         </>

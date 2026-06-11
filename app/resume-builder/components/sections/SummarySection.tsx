@@ -1,4 +1,6 @@
 'use client'
+import { Textarea } from '@/components/ui/textarea'
+
 
 type Props = {
     resumeData: any
@@ -39,7 +41,7 @@ export default function SummarySection({
                     Summary
                 </label>
 
-                <textarea
+                <Textarea
                     value={resumeData.summary || ''}
                     onChange={(e) =>
                         setResumeData({
@@ -49,21 +51,6 @@ export default function SummarySection({
                     }
                     placeholder="Write a compelling summary of your professional experience, skills, and career objectives..."
                     rows={8}
-                    className="
-                        mt-4
-                        w-full
-                        px-4 py-3
-                        rounded-2xl
-                        border
-                        border-zinc-200
-                        dark:border-zinc-800
-                        bg-zinc-50
-                        dark:bg-zinc-950
-                        outline-none
-                        resize-none
-                        text-sm
-                        leading-relaxed
-                    "
                 />
             </div>
         </div>

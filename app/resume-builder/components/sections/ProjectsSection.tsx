@@ -1,6 +1,6 @@
 'use client'
 import { Trash2, Plus } from 'lucide-react'
-
+import { Input } from '@/components/ui/input'
 type Props = {
     resumeData: any
     setResumeData: any
@@ -107,25 +107,14 @@ export default function ProjectsSection({
                                 Project Title
                             </label>
 
-                            <input
+                            <Input
                                 type="text"
                                 value={project.title}
                                 onChange={(e) =>
                                     updateProject(idx, 'title', e.target.value)
                                 }
                                 placeholder="Project Name"
-                                className="
-                                    mt-2
-                                    w-full
-                                    px-4 py-3
-                                    rounded-2xl
-                                    border
-                                    border-zinc-200
-                                    dark:border-zinc-800
-                                    bg-white
-                                    dark:bg-black
-                                    outline-none
-                                "
+                                
                             />
                         </div>
 
@@ -178,25 +167,14 @@ export default function ProjectsSection({
                                 Technologies Used
                             </label>
 
-                            <input
+                            <Input
                                 type="text"
                                 value={project.technologies}
                                 onChange={(e) =>
                                     updateProject(idx, 'technologies', e.target.value)
                                 }
                                 placeholder="React, TypeScript, Tailwind..."
-                                className="
-                                    mt-2
-                                    w-full
-                                    px-4 py-3
-                                    rounded-2xl
-                                    border
-                                    border-zinc-200
-                                    dark:border-zinc-800
-                                    bg-white
-                                    dark:bg-black
-                                    outline-none
-                                "
+                               
                             />
                         </div>
 
@@ -213,25 +191,14 @@ export default function ProjectsSection({
                                 Project Link
                             </label>
 
-                            <input
+                            <Input
                                 type="url"
                                 value={project.link}
                                 onChange={(e) =>
                                     updateProject(idx, 'link', e.target.value)
                                 }
                                 placeholder="https://project.com"
-                                className="
-                                    mt-2
-                                    w-full
-                                    px-4 py-3
-                                    rounded-2xl
-                                    border
-                                    border-zinc-200
-                                    dark:border-zinc-800
-                                    bg-white
-                                    dark:bg-black
-                                    outline-none
-                                "
+                               
                             />
                         </div>
                     </div>

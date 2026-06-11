@@ -1,4 +1,5 @@
 'use client'
+import {Input} from '@/components/ui/input'
 import { Trash2, Plus } from 'lucide-react'
 
 type Props = {
@@ -107,7 +108,7 @@ export default function ExperienceSection({
                                 Company Name
                             </label>
 
-                            <input
+                            <Input
                                 type="text"
                                 value={exp.company}
                                 onChange={(e) =>
@@ -142,7 +143,7 @@ export default function ExperienceSection({
                                 Job Title
                             </label>
 
-                            <input
+                            <Input  
                                 type="text"
                                 value={exp.title}
                                 onChange={(e) =>
@@ -177,7 +178,7 @@ export default function ExperienceSection({
                                 Duration
                             </label>
 
-                            <input
+                            <Input
                                 type="text"
                                 value={exp.date}
                                 onChange={(e) =>

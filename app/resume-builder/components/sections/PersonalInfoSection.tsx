@@ -1,4 +1,6 @@
 'use client'
+import { Input } from '@/components/ui/input'
+
 
 type Props = {
     resumeData: any
@@ -47,31 +49,19 @@ export default function PersonalInfoSection({
                         Full Name
                     </label>
 
-                    <input
-                        type="text"
-                        value={resumeData.personal.fullName}
-                        onChange={(e) =>
-                            setResumeData({
-                                ...resumeData,
-                                personal: {
-                                    ...resumeData.personal,
-                                    fullName: e.target.value,
-                                },
-                            })
-                        }
-                        className="
-                            mt-2
-                            w-full
-                            px-4 py-3
-                            rounded-2xl
-                            border
-                            border-zinc-200
-                            dark:border-zinc-800
-                            bg-zinc-50
-                            dark:bg-zinc-950
-                            outline-none
-                        "
-                    />
+                        <Input
+                            type="text"
+                            value={resumeData.personal.fullName}
+                            onChange={(e) =>
+                                setResumeData({
+                                    ...resumeData,
+                                    personal: {
+                                        ...resumeData.personal,
+                                        fullName: e.target.value,
+                                    },
+                                })
+                            }
+                        />
                 </div>
 
                 {/* Email */}
@@ -87,31 +77,19 @@ export default function PersonalInfoSection({
                         Email
                     </label>
 
-                    <input
-                        type="email"
-                        value={resumeData.personal.email}
-                        onChange={(e) =>
-                            setResumeData({
-                                ...resumeData,
-                                personal: {
-                                    ...resumeData.personal,
-                                    email: e.target.value,
-                                },
-                            })
-                        }
-                        className="
-                            mt-2
-                            w-full
-                            px-4 py-3
-                            rounded-2xl
-                            border
-                            border-zinc-200
-                            dark:border-zinc-800
-                            bg-zinc-50
-                            dark:bg-zinc-950
-                            outline-none
-                        "
-                    />
+                        <Input
+                            type="email"
+                            value={resumeData.personal.email}
+                            onChange={(e) =>
+                                setResumeData({
+                                    ...resumeData,
+                                    personal: {
+                                        ...resumeData.personal,
+                                        email: e.target.value,
+                                    },
+                                })
+                            }
+                        />
                 </div>
 
                 {/* Phone */}
@@ -127,31 +105,19 @@ export default function PersonalInfoSection({
                         Mobile Number
                     </label>
 
-                    <input
-                        type="text"
-                        value={resumeData.personal.phone}
-                        onChange={(e) =>
-                            setResumeData({
-                                ...resumeData,
-                                personal: {
-                                    ...resumeData.personal,
-                                    phone: e.target.value,
-                                },
-                            })
-                        }
-                        className="
-                            mt-2
-                            w-full
-                            px-4 py-3
-                            rounded-2xl
-                            border
-                            border-zinc-200
-                            dark:border-zinc-800
-                            bg-zinc-50
-                            dark:bg-zinc-950
-                            outline-none
-                        "
-                    />
+                        <Input
+                            type="text"
+                            value={resumeData.personal.phone}
+                            onChange={(e) =>
+                                setResumeData({
+                                    ...resumeData,
+                                    personal: {
+                                        ...resumeData.personal,
+                                        phone: e.target.value,
+                                    },
+                                })
+                            }
+                        />
                 </div>
             </div>
         </div>

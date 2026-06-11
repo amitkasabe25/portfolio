@@ -1,5 +1,6 @@
 'use client'
 import { Trash2, Plus } from 'lucide-react'
+import { Input } from '@/components/ui/input'
 
 type Props = {
     resumeData: any
@@ -107,25 +108,13 @@ export default function EducationSection({
                                 Institution Name
                             </label>
 
-                            <input
+                            <Input
                                 type="text"
                                 value={edu.institution}
                                 onChange={(e) =>
                                     updateEducation(idx, 'institution', e.target.value)
                                 }
                                 placeholder="University or College Name"
-                                className="
-                                    mt-2
-                                    w-full
-                                    px-4 py-3
-                                    rounded-2xl
-                                    border
-                                    border-zinc-200
-                                    dark:border-zinc-800
-                                    bg-white
-                                    dark:bg-black
-                                    outline-none
-                                "
                             />
                         </div>
 
@@ -142,25 +131,13 @@ export default function EducationSection({
                                 Degree / Qualification
                             </label>
 
-                            <input
+                            <Input
                                 type="text"
                                 value={edu.degree}
                                 onChange={(e) =>
                                     updateEducation(idx, 'degree', e.target.value)
                                 }
                                 placeholder="e.g., Bachelor of Computer Applications"
-                                className="
-                                    mt-2
-                                    w-full
-                                    px-4 py-3
-                                    rounded-2xl
-                                    border
-                                    border-zinc-200
-                                    dark:border-zinc-800
-                                    bg-white
-                                    dark:bg-black
-                                    outline-none
-                                "
                             />
                         </div>
 
@@ -178,25 +155,13 @@ export default function EducationSection({
                                     Start Year
                                 </label>
 
-                                <input
+                                <Input
                                     type="text"
                                     value={edu.startYear}
                                     onChange={(e) =>
                                         updateEducation(idx, 'startYear', e.target.value)
                                     }
                                     placeholder="2021"
-                                    className="
-                                        mt-2
-                                        w-full
-                                        px-4 py-3
-                                        rounded-2xl
-                                        border
-                                        border-zinc-200
-                                        dark:border-zinc-800
-                                        bg-white
-                                        dark:bg-black
-                                        outline-none
-                                    "
                                 />
                             </div>
 
@@ -212,25 +177,13 @@ export default function EducationSection({
                                     End Year
                                 </label>
 
-                                <input
+                                <Input
                                     type="text"
                                     value={edu.endYear}
                                     onChange={(e) =>
                                         updateEducation(idx, 'endYear', e.target.value)
                                     }
-                                    placeholder="2024"
-                                    className="
-                                        mt-2
-                                        w-full
-                                        px-4 py-3
-                                        rounded-2xl
-                                        border
-                                        border-zinc-200
-                                        dark:border-zinc-800
-                                        bg-white
-                                        dark:bg-black
-                                        outline-none
-                                    "
+                                    placeholder="2024 or Present"
                                 />
                             </div>
                         </div>

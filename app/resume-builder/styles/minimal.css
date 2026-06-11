@@ -1,0 +1,208 @@
+/* ════════════════════════════════════════════════════════════════════
+   APPEND THIS to app/resume-builder/styles/resume-print.css
+   Minimal template — faithful translation of the original Tailwind design
+   (light uppercase name, hairline section rules, dot bullets, chips).
+   All rules scoped under .resume.minimal so other templates are unaffected.
+   ════════════════════════════════════════════════════════════════════ */
+
+.resume.minimal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* was space-y-5 */
+  font-size: 14px;
+}
+
+/* ── Header ── */
+.resume.minimal .m-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e4e4e7; /* zinc-200 */
+}
+
+.resume.minimal .m-name {
+  font-size: 30px;            /* text-3xl */
+  font-weight: 300;           /* font-light */
+  letter-spacing: 0.025em;    /* tracking-wide */
+  text-transform: uppercase;
+  color: #18181b;             /* zinc-900 */
+  margin: 0;
+}
+
+.resume.minimal .m-title {
+  margin: 4px 0 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;             /* zinc-400 */
+}
+
+.resume.minimal .m-contact {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 4px;
+  font-size: 12px;
+  color: #71717a;             /* zinc-500 */
+}
+
+.resume.minimal .m-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.resume.minimal .m-icon {
+  color: #d4d4d8;             /* zinc-300 */
+  font-size: 11px;
+}
+
+/* ── Section shell ── */
+.resume.minimal .m-section {
+  margin: 0;
+}
+
+.resume.minimal .m-section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  break-after: avoid;          /* heading never orphaned at page bottom */
+}
+
+.resume.minimal .m-label {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+}
+
+.resume.minimal .m-rule {
+  flex: 1;
+  height: 1px;
+  background: #f4f4f5;        /* zinc-100 */
+}
+
+/* ── Summary ── */
+.resume.minimal .m-summary {
+  font-size: 14px;
+  line-height: 1.625;
+  color: #52525b;             /* zinc-600 */
+  margin: 0;
+}
+
+/* ── Vertical stacks (space-y replacements) ── */
+.resume.minimal .m-stack-lg { display: flex; flex-direction: column; gap: 20px; }
+.resume.minimal .m-stack-md { display: flex; flex-direction: column; gap: 14px; }
+
+/* ── Experience entry ── */
+.resume.minimal .m-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
+}
+
+.resume.minimal .m-heading {
+  font-size: 14px;
+  font-weight: 500;
+  color: #18181b;
+  margin: 0;
+}
+
+.resume.minimal .m-sub {
+  font-size: 12px;
+  color: #71717a;
+  margin: 1px 0 0;
+}
+
+.resume.minimal .m-dates {
+  font-size: 11px;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  white-space: nowrap;
+  margin-top: 2px;
+  text-align: right;
+}
+
+.resume.minimal .m-points {
+  grid-column: 1 / -1;        /* col-span-2 */
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1.625;
+  color: #52525b;
+}
+
+.resume.minimal .m-points li {
+  position: relative;
+  padding-left: 12px;
+  break-inside: avoid;        /* a bullet never splits across pages */
+}
+
+.resume.minimal .m-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #d4d4d8;        /* zinc-300 dot */
+}
+
+/* ── Skills chips ── */
+.resume.minimal .m-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume.minimal .m-skills li {
+  padding: 2px 8px;
+  font-size: 11px;
+  letter-spacing: 0.025em;
+  border: 1px solid #e4e4e7;
+  border-radius: 2px;
+  color: #52525b;
+}
+
+/* ── Education row ── */
+.resume.minimal .m-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* ── Projects ── */
+.resume.minimal .m-desc {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.625;
+  color: #52525b;
+}
+
+.resume.minimal .m-tech {
+  margin: 4px 0 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+}
+
+.resume.minimal .m-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #71717a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

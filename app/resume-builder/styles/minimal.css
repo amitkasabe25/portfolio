@@ -8,8 +8,18 @@
 .resume.minimal {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* was space-y-5 */
+  gap: 20px;
   font-size: 14px;
+}
+
+@media print {
+  .resume.minimal {
+    display: block !important;
+  }
+
+  .resume.minimal > * + * {
+    margin-top: 20px;
+  }
 }
 
 /* ── Header ── */
@@ -19,11 +29,11 @@
 }
 
 .resume.minimal .m-name {
-  font-size: 30px;            /* text-3xl */
-  font-weight: 300;           /* font-light */
-  letter-spacing: 0.025em;    /* tracking-wide */
+  font-size: 30px; /* text-3xl */
+  font-weight: 300; /* font-light */
+  letter-spacing: 0.025em; /* tracking-wide */
   text-transform: uppercase;
-  color: #18181b;             /* zinc-900 */
+  color: #18181b; /* zinc-900 */
   margin: 0;
 }
 
@@ -32,7 +42,7 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #a1a1aa;             /* zinc-400 */
+  color: #a1a1aa; /* zinc-400 */
 }
 
 .resume.minimal .m-contact {
@@ -42,7 +52,7 @@
   column-gap: 16px;
   row-gap: 4px;
   font-size: 12px;
-  color: #71717a;             /* zinc-500 */
+  color: #71717a; /* zinc-500 */
 }
 
 .resume.minimal .m-contact-item {
@@ -52,7 +62,7 @@
 }
 
 .resume.minimal .m-icon {
-  color: #d4d4d8;             /* zinc-300 */
+  color: #d4d4d8; /* zinc-300 */
   font-size: 11px;
 }
 
@@ -66,7 +76,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 8px;
-  break-after: avoid;          /* heading never orphaned at page bottom */
+  break-after: avoid; /* heading never orphaned at page bottom */
 }
 
 .resume.minimal .m-label {
@@ -80,26 +90,61 @@
 .resume.minimal .m-rule {
   flex: 1;
   height: 1px;
-  background: #f4f4f5;        /* zinc-100 */
+  background: #f4f4f5; /* zinc-100 */
 }
 
 /* ── Summary ── */
 .resume.minimal .m-summary {
   font-size: 14px;
   line-height: 1.625;
-  color: #52525b;             /* zinc-600 */
+  color: #52525b; /* zinc-600 */
   margin: 0;
 }
 
 /* ── Vertical stacks (space-y replacements) ── */
-.resume.minimal .m-stack-lg { display: flex; flex-direction: column; gap: 20px; }
-.resume.minimal .m-stack-md { display: flex; flex-direction: column; gap: 14px; }
+.resume.minimal .m-stack-lg {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.resume.minimal .m-stack-md {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media print {
+  .resume.minimal .m-stack-lg,
+  .resume.minimal .m-stack-md {
+    display: block;
+  }
+
+  .resume.minimal .m-stack-lg > * + * {
+    margin-top: 20px;
+  }
+
+  .resume.minimal .m-stack-md > * + * {
+    margin-top: 14px;
+  }
+}
 
 /* ── Experience entry ── */
 .resume.minimal .m-entry {
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: 16px;
+}
+
+@media print {
+  .resume.minimal .m-entry {
+    display: block;
+  }
+
+  .resume.minimal .m-dates {
+    display: block;
+    text-align: left;
+    margin-top: 2px;
+  }
 }
 
 .resume.minimal .m-heading {
@@ -126,7 +171,7 @@
 }
 
 .resume.minimal .m-points {
-  grid-column: 1 / -1;        /* col-span-2 */
+  grid-column: 1 / -1; /* col-span-2 */
   margin: 8px 0 0;
   padding: 0;
   list-style: none;
@@ -141,7 +186,7 @@
 .resume.minimal .m-points li {
   position: relative;
   padding-left: 12px;
-  break-inside: avoid;        /* a bullet never splits across pages */
+  break-inside: avoid; /* a bullet never splits across pages */
 }
 
 .resume.minimal .m-points li::before {
@@ -152,7 +197,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d4d4d8;        /* zinc-300 dot */
+  background: #d4d4d8; /* zinc-300 dot */
 }
 
 /* ── Skills chips ── */
@@ -205,4 +250,11 @@
   color: #71717a;
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.resume.minimal .m-entry,
+.resume.minimal .project,
+.resume.minimal .m-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }

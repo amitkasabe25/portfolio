@@ -13,7 +13,7 @@
 
 @page {
   size: A4;
-  margin: 0;
+  margin: 14mm 16mm;
 }
 
 .resume,
@@ -28,7 +28,8 @@
   width: 210mm;
   min-height: 297mm;
   padding: 14mm 16mm;
-  margin: 0;
+  margin: 0 auto;
+
   background: #ffffff;
   color: #18181b;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -182,3 +183,12 @@
   text-transform: none;
 }
 /* …extend per template as needed… */
+
+@media print {
+  .resume {
+    width: auto !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}

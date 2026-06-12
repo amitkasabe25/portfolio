@@ -1,31 +1,20 @@
 /* ========== TRENDING TEMPLATE – MODERN GRAYSCALE, POPPINS ========== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* ── Root ── */
+/* ── Root – NO VERTICAL LINE ── */
 .resume.trending {
   max-width: 860px;
   margin: 0 auto;
   background: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: #1c1c1c;
   font-size: 13.5px;
-  line-height: 1.6;          /* slightly increased for justified text */
-  text-align: justify;       /* base justification for all text */
-  hyphens: auto;             /* better word breaks */
-  padding: 3rem 3.2rem;
+  line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
+  padding: 3rem 3.2rem;         /* standard padding, no extra left space for strip */
   box-sizing: border-box;
   position: relative;
-}
-
-/* Signature element: thick left accent strip */
-.resume.trending::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 100%;
-  background: #111;
 }
 
 /* ── HEADER ── */
@@ -37,7 +26,7 @@
   padding-bottom: 1.4rem;
   margin-bottom: 2rem;
   border-bottom: 1.5px solid #111;
-  text-align: left;          /* header stays left/right, not justified */
+  text-align: left;
 }
 
 .t-name {
@@ -49,9 +38,7 @@
   color: #000;
   line-height: 1.1;
   display: inline-block;
-  transform: scaleX(0.92);
-  transform-origin: left center;
-  text-align: left;
+  /* scale removed to avoid pushing text */
 }
 
 .t-contact {
@@ -60,14 +47,12 @@
   line-height: 1.75;
   color: #3a3a3a;
 }
-
 .t-contact div {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 0.3rem;
 }
-
 .t-contact strong {
   font-weight: 600;
   color: #111;
@@ -93,9 +78,8 @@
   display: inline-block;
   padding: 0.2rem 0.7rem 0.18rem;
   margin-bottom: 1.1rem;
-  margin-left: -3.2rem;
-  padding-left: calc(3.2rem + 0.7rem);
-  text-align: left;          /* title remains left-aligned */
+  /* No negative margin, no transform – plain block/inline */
+  text-align: left;
 }
 
 /* ── SUMMARY ── */
@@ -105,7 +89,7 @@
   color: #2e2e2e;
   margin: 0;
   font-weight: 400;
-  text-align: justify;       /* justified summary */
+  text-align: justify;
   hyphens: auto;
 }
 
@@ -115,12 +99,10 @@
   padding-left: 1rem;
   border-left: 2px solid #e0e0e0;
   break-inside: avoid;
+  page-break-inside: avoid;
   transition: border-color 0.2s;
 }
-
-.t-job:hover {
-  border-left-color: #555;
-}
+.t-job:hover { border-left-color: #555; }
 
 .t-job-top {
   display: flex;
@@ -157,29 +139,29 @@
   color: #444;
   margin-bottom: 0.5rem;
   font-style: italic;
-  text-align: justify;       /* role description justified */
+  text-align: justify;
   hyphens: auto;
 }
 
 .t-points {
   margin: 0;
-  padding-left: 1.3rem;
+  padding-left: 0;
   list-style: none;
   color: #2c2c2c;
   font-size: 12.5px;
 }
-
 .t-points li {
   margin-bottom: 0.4rem;
   line-height: 1.6;
   position: relative;
-  padding-left: 1rem;
-  text-align: justify;       /* each bullet point justified */
+  padding-left: 1.1rem;
+  text-align: justify;
   hyphens: auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
-
 .t-points li::before {
-  content: '—';              /* improved em dash */
+  content: '—';
   position: absolute;
   left: 0;
   color: #888;
@@ -198,7 +180,7 @@
   padding: 0.7rem 1rem;
   border-radius: 0 4px 4px 0;
   letter-spacing: 0.1px;
-  text-align: justify;       /* skills block justified */
+  text-align: justify;
   hyphens: auto;
 }
 
@@ -212,39 +194,21 @@
   padding: 0.65rem 0;
   border-bottom: 0.5px solid #e8e8e8;
 }
-
-.t-education:last-child {
-  border-bottom: none;
-}
-
-.t-education .t-company {
-  font-size: 13.5px;
-  flex: 1 1 35%;
-  text-align: left;
-}
-
+.t-education:last-child { border-bottom: none; }
+.t-education .t-company { font-size: 13.5px; flex: 1 1 35%; text-align: left; }
 .t-education > div:nth-child(2) {
-  font-size: 12.5px;
-  color: #444;
-  flex: 1 1 35%;
-  font-weight: 400;
-  text-align: justify;       /* degree/field justified */
-  hyphens: auto;
+  font-size: 12.5px; color: #444; flex: 1 1 35%; font-weight: 400;
+  text-align: justify; hyphens: auto;
 }
+.t-education .t-date { flex: 0 0 auto; white-space: nowrap; }
 
-.t-education .t-date {
-  flex: 0 0 auto;
-  white-space: nowrap;
-}
-
-/* ── RESPONSIVE ── */
+/* ── RESPONSIVE (small screens) ── */
 @media (max-width: 580px) {
   .resume.trending {
-    padding: 2rem 1.5rem 2rem 1.8rem;
+    padding: 2rem 1.5rem;
   }
   .t-name {
     font-size: 26px;
-    transform: none;
   }
   .t-header {
     flex-direction: column;
@@ -257,47 +221,65 @@
     justify-content: flex-start;
   }
   .t-section-title {
-    margin-left: -1.8rem;
-    padding-left: calc(1.8rem + 0.7rem);
+    margin-left: 0;          /* normal, no bleeding */
+    padding-left: 0.7rem;
   }
   .t-education {
     flex-direction: column;
     gap: 0.15rem;
   }
-  .t-education .t-date {
+  .t-education .t-date, .t-date {
     white-space: normal;
   }
 }
 
-/* ── PRINT ── */
+/* ── PRINT / DOWNLOAD – NO VERTICAL LINE ── */
 @media print {
+  /* Force backgrounds for dates and skills */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* No pseudo-element, no border-left on container */
   .resume.trending {
-    padding: 0.25in 0.35in 0.25in 0.4in;
-    box-shadow: none;
-    max-width: 100%;
-    hyphens: auto;           /* ensure hyphenation in print */
+    padding: 0.2in 0.3in;
   }
-  .resume.trending::before {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
+
+  /* Section titles: normal styling */
   .t-section-title {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    margin-left: 0;
+    padding-left: 0.7rem;
   }
+
+  /* Prevent nowrap overflow on dates */
   .t-date {
+    white-space: normal;
+    font-size: 10px;
     background: #f4f4f4 !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
   }
-  .t-section {
-    margin-bottom: 1.2rem;
-  }
-  .t-job {
+
+  /* Enforce page breaks inside jobs and sections */
+  .t-section, .t-job, .t-points li {
     break-inside: avoid;
+    page-break-inside: avoid;
   }
-  /* Keep justified text in print */
+
+  /* Keep justified text */
   .t-summary, .t-role, .t-points li, .t-skills, .t-education > div:nth-child(2) {
     text-align: justify;
+  }
+
+  /* Reduce margins for a tighter print layout */
+  .t-section {
+    margin-bottom: 1rem;
+  }
+  .t-job {
+    margin-bottom: 1rem;
+  }
+
+  /* Solid fallback font because Google Fonts often don't load in PDFs */
+  .resume.trending, .resume.trending * {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   }
 }

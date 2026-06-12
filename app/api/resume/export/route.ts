@@ -24,11 +24,14 @@ export async function POST(req: NextRequest) {
 
   // ── 2. Validate ──────────────────────────────────────────────────────
   let body: { templateId?: string; resumeData?: unknown };
+  
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
+
+  
 
   const { templateId, resumeData } = body;
   if (

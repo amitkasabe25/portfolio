@@ -64,6 +64,10 @@ const templates = [
         id: "classic",
         label: "Classic",
     },
+    {
+        id: "trending",
+        label: "Trending",
+    }
 ];
 
 export default function ResumeSidebar({

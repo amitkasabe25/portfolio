@@ -1,13 +1,13 @@
 import { ResumeData } from "@/app/resume-builder/types/resume";
-import "@/app/resume-builder/styles/trending.css";
+import modernCss from "@/app/resume-builder/styles/modern.css";
 
 type Props = { data: ResumeData };
 
-export default function TrendingTemplate({ data }: Props) {
-  if (!data) return <div className="resume trending" />;
+export default function ModernTemplate({ data }: Props) {
+  if (!data) return <div className={`resume ${modernCss}`} />;
 
   return (
-    <div className="resume trending">
+    <div className={`resume ${modernCss}`}>
       <header className="t-header">
         <h1 className="t-name">{data.personal?.fullName || "Your Name"}</h1>
         <div className="t-contact">

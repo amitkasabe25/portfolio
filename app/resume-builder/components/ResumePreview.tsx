@@ -57,10 +57,19 @@ export default function ResumePreview({ resumeData }: Props) {
   const Template =
     resumeTemplates[selectedTemplate as keyof typeof resumeTemplates];
 
+    
+
   if (!Template) {
     return <div>Template not found</div>;
   }
 
+  if (selectedTemplate === "classic") {
+  return (
+    <div className="flex items-center justify-center h-full text-center text-sm text-zinc-400 dark:text-zinc-600">
+      Classic template is temporarily unavailable.
+    </div>
+  );
+}
   const pageCount = Math.max(1, Math.ceil(sheetHeight / A4_HEIGHT_PX));
 
   const handleDownload = async () => {

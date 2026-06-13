@@ -2,6 +2,7 @@
 "use client";
 
 import { ResumeData } from "@/app/resume-builder/types/resume";
+import ClassicTemplateCss from "@/app/resume-builder/styles/classic.css";
 
 type Props = {
     data: ResumeData;
@@ -17,7 +18,7 @@ export default function ClassicTemplate({ data }: Props) {
     }
 
     return (
-        <div className="w-[800px] min-h-[1123px] h-fit bg-white dark:bg-zinc-900 shadow-lg border border-zinc-200 dark:border-zinc-800 p-12 space-y-8">
+        <div className={`resume-classic ${ClassicTemplateCss}`}>
 
                 {/* ── Header (centered, formal) ─────────────────── */}
                 <header className="text-center pb-6 border-b border-zinc-300 dark:border-zinc-700">

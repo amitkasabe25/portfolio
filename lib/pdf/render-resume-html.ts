@@ -17,6 +17,8 @@ let fontCache: string | null = null;
 const templateCssFiles: Record<string, string> = {
   modern: "modern.css",
   trending: "trending.css",
+  minimal: "minimal.css",
+  classic: "classic.css",
 };
 
 async function loadFonts(): Promise<string> {

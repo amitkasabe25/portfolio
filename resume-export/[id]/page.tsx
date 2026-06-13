@@ -3,6 +3,7 @@
 
 import { notFound } from "next/navigation";
 import { resumeTemplates } from "@/app/resume-builder/templates";
+import type { ResumeData } from "@/app/resume-builder/types/resume";
 
 type Props = {
   params: Promise<{
@@ -36,7 +37,7 @@ export default async function ResumeExportPage({ params }: Props) {
 
   const Template =
     resumeTemplates[
-      resume.templateId as keyof typeof resumeTemplates
+    resume.templateId as keyof typeof resumeTemplates
     ];
 
   if (!Template) {
@@ -87,8 +88,7 @@ export default async function ResumeExportPage({ params }: Props) {
 
       <body>
         <div className="page">
-          <Template data={resume.resumeData} />
-        </div>
+          <Template data={resume.resumeData as ResumeData} />        </div>
       </body>
     </html>
   );

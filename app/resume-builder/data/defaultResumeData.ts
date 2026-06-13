@@ -2,12 +2,17 @@
 import type { ResumeData } from "../types/resume";
 
 export const defaultResumeData: ResumeData = {
-  personal: {},
+  personal: {
+    fullName: "",
+    email: "",
+    phone: "",
+    location: "",
+    title: "",
+  },
   summary: "",
   experience: [],
-  education: [],        // if your type includes it
-  skills: [],           // if your type includes it
-  certifications: [],   // etc.
+  education: [],
+  skills: [],
   projects: [],
   languages: [],
 };
